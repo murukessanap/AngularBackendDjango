@@ -42,6 +42,9 @@ def postJSON(request):
             s.save()
             return HttpResponse("data saved", content_type="application/json")
     else:
+        s = StockM()
+        s.setValues("{'item': 'hihello', 'volume': '34', 'price': '535', 'time': '345'}")
+        s.save()
         return HttpResponse("send via POst with json object as body", content_type="application/json")
 
 

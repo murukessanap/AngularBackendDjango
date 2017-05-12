@@ -1,0 +1,30 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<script>
+/*$.ajax({
+    type: 'POST',
+    url: 'http://collobsearchmuru.pythonanywhere.com/jsonGet/postJSON',
+    data: '{"item":"2","price":"4","volume":"1","time":"12:56"}', // or JSON.stringify ({name: 'jonas'}),
+    //success: function(data) { alert('data: ' + data); },
+    contentType: "application/json",
+    dataType: 'json'
+});*/
+
+$(function(){
+	setInterval(oneSecondFunction, 2000);
+});
+
+function oneSecondFunction(){
+    $.ajax({
+        url: 'http://collobsearchmuru.pythonanywhere.com/postJSON/',
+        type: 'GET',
+        data: {},
+        dataType: 'json'
+    });
+}
+</script>
+</body>
+</html>
