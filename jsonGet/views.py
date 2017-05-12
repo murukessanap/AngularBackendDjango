@@ -1,6 +1,6 @@
 import json
 from .models import StockM
-from django.forms.models import model_to_dict
+#from django.forms.models import model_to_dict
 from django.http import HttpResponse
 #from django.shortcuts import get_object_or_404, redirect, direct_to_template
 
@@ -32,11 +32,24 @@ def timedModelUpdate():
     return direct_to_template(request, 'my_template.html', {'form': form})'''
 
 
+
+def postJSON(request):
+    if request.method=='POST':
+            #received_json_data = json.loads(request.body)
+            #s = StockM(received_json_data)
+            s = StockM()
+            s.setValues(json.loads(request.body))
+            s.save()
+    return
+
 flag = 1
 def index(request):
     global flag
     if(flag == 1):
-        ls = StockM(item="ramseed",price="1111",volume="453",time="12:50")
+        d = {"item":"ramseed","price":"1111","volume":"453","time":"12:50"}
+        d = json.dumps(d)
+        ls = StockM()
+        ls.setValues(d)
         ls.save()
         flag = 0
     ls = StockM.objects.all()
