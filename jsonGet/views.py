@@ -40,7 +40,10 @@ def postJSON(request):
             s = StockM()
             s.setValues(json.loads(request.body))
             s.save()
-    return
+            return HttpResponse("data saved", content_type="application/json")
+    else:
+        return HttpResponse("send via POst with json object as body", content_type="application/json")
+
 
 flag = 1
 def index(request):

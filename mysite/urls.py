@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
+from jsonGet import views
 
 urlpatterns = [
-    url(r'^jsonGet/', include('jsonGet.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^postJSON/', views.postJSON, name='postJSON'),
+    url(r'^jsonGet/', include('jsonGet.urls')),
     #url(r'^darts/', include('darts.urls')),
     #url(r'^angularjs/', include('sirtrevor.urls')),
 ]
